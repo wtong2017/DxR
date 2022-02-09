@@ -101,7 +101,10 @@ namespace DxR
                 }
             }
 #else
-            return File.ReadAllText(filename);
+            Debug.Log("test");
+            var result = File.ReadAllText(filename);
+            Debug.Log("read file successfully");
+            return result;
 #endif
         }
 

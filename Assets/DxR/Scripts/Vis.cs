@@ -851,7 +851,13 @@ namespace DxR
 
         private void InitDataList()
         {
+            Debug.Log("Test");
+#if UNITY_IOS && !UNITY_EDITOR
+            Debug.Log(Application.dataPath + "/Resources/Data/StreamingAssets/DxRData");
+            string[] dirs = Directory.GetFiles(Application.streamingAssetsPath + "/DxRData");
+#else
             string[] dirs = Directory.GetFiles(Application.dataPath + "/StreamingAssets/DxRData");
+#endif
             dataList = new List<string>();
             dataList.Add(DxR.Vis.UNDEFINED);
             dataList.Add("inline");
