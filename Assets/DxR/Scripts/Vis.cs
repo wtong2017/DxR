@@ -455,28 +455,29 @@ namespace DxR
             {
                 markPrefab.GetComponent<Mark>().Infer(data, visSpecs, out visSpecsInferred, visSpecsURL);
 
-                if(enableSpecsExpansion)
-                {
-                    JSONNode visSpecsToWrite = JSON.Parse(visSpecsInferred.ToString());
-                    if (visSpecs["data"]["url"] != null && visSpecs["data"]["url"] != "inline")
-                    {
-                        visSpecsToWrite["data"].Remove("values");
-                    }
+                // TODO: temporay close the 
+//                if(enableSpecsExpansion)
+//                {
+//                    JSONNode visSpecsToWrite = JSON.Parse(visSpecsInferred.ToString());
+//                    if (visSpecs["data"]["url"] != null && visSpecs["data"]["url"] != "inline")
+//                    {
+//                        visSpecsToWrite["data"].Remove("values");
+//                    }
 
-                    if (visSpecs["interaction"].AsArray.Count == 0)
-                    {
-                        visSpecsToWrite.Remove("interaction");
-                    }
-#if UNITY_EDITOR
-            System.IO.File.WriteAllText(Parser.GetFullSpecsPath(visSpecsURL), visSpecsToWrite.ToString(2));
-#else
+//                    if (visSpecs["interaction"].AsArray.Count == 0)
+//                    {
+//                        visSpecsToWrite.Remove("interaction");
+//                    }
+//#if UNITY_EDITOR
+//            System.IO.File.WriteAllText(Parser.GetFullSpecsPath(visSpecsURL), visSpecsToWrite.ToString(2));
+//#else
 
-                    UnityEngine.Windows.File.WriteAllBytes(Parser.GetFullSpecsPath(visSpecsURL),
-                        System.Text.Encoding.UTF8.GetBytes(visSpecsToWrite.ToString(2)));
-#endif
+//                    UnityEngine.Windows.File.WriteAllBytes(Parser.GetFullSpecsPath(visSpecsURL),
+//                        System.Text.Encoding.UTF8.GetBytes(visSpecsToWrite.ToString(2)));
+//#endif
 
                     
-                }
+//                }
             }
             else
             {
@@ -935,24 +936,26 @@ namespace DxR
 
         public void UpdateTextSpecsFromVisSpecs()
         {
-            JSONNode visSpecsToWrite = JSON.Parse(visSpecs.ToString());
-            if(visSpecs["data"]["url"] != null && visSpecs["data"]["url"] != "inline")
-            {
-                visSpecsToWrite["data"].Remove("values");
-            }
+            // TODO: temporary disable saving spec: need to check how to do that in ios and andriod first
+            return;
+//            JSONNode visSpecsToWrite = JSON.Parse(visSpecs.ToString());
+//            if(visSpecs["data"]["url"] != null && visSpecs["data"]["url"] != "inline")
+//            {
+//                visSpecsToWrite["data"].Remove("values");
+//            }
 
-            if(visSpecs["interaction"].AsArray.Count == 0)
-            {
-                visSpecsToWrite.Remove("interaction");
-            }
+//            if(visSpecs["interaction"].AsArray.Count == 0)
+//            {
+//                visSpecsToWrite.Remove("interaction");
+//            }
 
-#if UNITY_EDITOR
-            System.IO.File.WriteAllText(Parser.GetFullSpecsPath(visSpecsURL), visSpecsToWrite.ToString(2));
-#else
+//#if UNITY_EDITOR
+//            System.IO.File.WriteAllText(Parser.GetFullSpecsPath(visSpecsURL), visSpecsToWrite.ToString(2));
+//#else
 
-            UnityEngine.Windows.File.WriteAllBytes(Parser.GetFullSpecsPath(visSpecsURL),
-                System.Text.Encoding.UTF8.GetBytes(visSpecsToWrite.ToString(2)));
-#endif
+//            UnityEngine.Windows.File.WriteAllBytes(Parser.GetFullSpecsPath(visSpecsURL),
+//                System.Text.Encoding.UTF8.GetBytes(visSpecsToWrite.ToString(2)));
+//#endif
         }
 
         public List<string> GetChannelsList(string markName)

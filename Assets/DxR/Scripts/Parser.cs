@@ -4,6 +4,7 @@ using UnityEngine;
 using SimpleJSON;
 using System;
 using System.IO;
+using UnityEngine.Networking;
 
 namespace DxR
 {
@@ -85,7 +86,23 @@ namespace DxR
 
         public static string GetStringFromFile(string filename)
         {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            using (UnityWebRequest reader = UnityWebRequest.Get(filename)) {
+                reader.SendWebRequest();
+                while (!reader.isDone) {
+                }
+                if (!reader.isHttpError && !reader.isNetworkError) {
+                Debug.Log(reader.downloadHandler.text);
+                   return reader.downloadHandler.text;
+                }
+                else {
+                    Debug.LogError("Error: " + reader.error);
+                    return "";
+                }
+            }
+#else
             return File.ReadAllText(filename);
+#endif
         }
 
         public static string GetFullSpecsPath(string filename)
