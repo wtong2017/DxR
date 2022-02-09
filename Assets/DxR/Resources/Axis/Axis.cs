@@ -84,27 +84,28 @@ namespace DxR
 
             SetFilterLength(axisSpecs["length"].AsFloat);
 
-            DxR.SliderGestureControlBothSide sliderControl =
-                    slider.GetComponent<DxR.SliderGestureControlBothSide>();
-            if (sliderControl == null) return;
+            return;
+            //DxR.SliderGestureControlBothSide sliderControl =
+            //        slider.GetComponent<DxR.SliderGestureControlBothSide>();
+            //if (sliderControl == null) return;
 
-            float domainMin = float.Parse(scale.domain[0]);
-            float domainMax = float.Parse(scale.domain[1]);
+            //float domainMin = float.Parse(scale.domain[0]);
+            //float domainMax = float.Parse(scale.domain[1]);
 
-            // TODO: Check validity of specs.
+            //// TODO: Check validity of specs.
 
-            sliderControl.SetSpan(domainMin, domainMax);
-            sliderControl.SetSliderValue1(domainMin);
-            sliderControl.SetSliderValue2(domainMax);
+            //sliderControl.SetSpan(domainMin, domainMax);
+            //sliderControl.SetSliderValue1(domainMin);
+            //sliderControl.SetSliderValue2(domainMax);
 
-            slider.gameObject.name = dataField;
+            //slider.gameObject.name = dataField;
 
-            interactionsObject.EnableAxisThresholdFilter(dataField);
+            //interactionsObject.EnableAxisThresholdFilter(dataField);
 
-            if (interactionsObject != null)
-            {
-                sliderControl.OnUpdateEvent.AddListener(interactionsObject.ThresholdFilterUpdated);
-            }
+            //if (interactionsObject != null)
+            //{
+            //    sliderControl.OnUpdateEvent.AddListener(interactionsObject.ThresholdFilterUpdated);
+            //}
         }
 
         public void SetTitle(string title)

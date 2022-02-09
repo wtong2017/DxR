@@ -46,13 +46,13 @@ namespace DxR
 
         private void SetFollowing(string value)
         {
-            if(value == "True")
-            {
-                gameObject.GetComponent<HoloToolkit.Unity.Billboard>().enabled = true;
-            } else
-            {
-                gameObject.GetComponent<HoloToolkit.Unity.Billboard>().enabled = false;
-            }
+            //if(value == "True")
+            //{
+            //    gameObject.GetComponent<HoloToolkit.Unity.Billboard>().enabled = true;
+            //} else
+            //{
+            //    gameObject.GetComponent<HoloToolkit.Unity.Billboard>().enabled = false;
+            //}
         }
 
         private void SetText(string value)

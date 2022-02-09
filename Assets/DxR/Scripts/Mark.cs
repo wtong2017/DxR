@@ -967,7 +967,7 @@ namespace DxR
             Renderer renderer = transform.GetComponent<Renderer>();
             if (renderer != null)
             {
-                DxR.GazeResponder sc = gameObject.AddComponent(typeof(DxR.GazeResponder)) as DxR.GazeResponder;
+                //DxR.GazeResponder sc = gameObject.AddComponent(typeof(DxR.GazeResponder)) as DxR.GazeResponder;
                 tooltip = tooltipObject;
             }
         }
